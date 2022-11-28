@@ -178,16 +178,16 @@ selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-
 //Save individual channels as RGB
 
 selectWindow(FIJI_ch1_ID);run("RGB Color");
-saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"-"+Color_ch1+"_"+name_ch1+".tif");
+saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_"+Color_ch1+"-"+name_ch1+".tif");
 
 selectWindow(FIJI_ch2_ID);run("RGB Color");
-saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"-"+Color_ch2+"_"+name_ch2+".tif");
+saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_"+Color_ch2+"-"+name_ch2+".tif");
 
 selectWindow(FIJI_ch3_ID);run("RGB Color");
-saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"-"+Color_ch3+"_"+name_ch3+".tif");
+saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_"+Color_ch3+"-"+name_ch3+".tif");
 
 selectWindow(FIJI_ch4_ID);run("RGB Color");
-saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"-"+Color_ch4+"_"+name_ch4+".tif");
+saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_"+Color_ch4+"-"+name_ch4+".tif");
 
 //Save merge with scales
 
@@ -213,7 +213,7 @@ saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch4+"-wscale.
 
 //Generate montage.
 
-run("Concatenate...", "  title=[Stack] image1=["+titlewoext+"-"+CropID+"-"+Color_ch1+"_"+name_ch1+".tif] image2=["+titlewoext+"-"+CropID+"-"+Color_ch2+"_"+name_ch2+".tif] image3=["+titlewoext+"-"+CropID+"-"+Color_ch3+"_"+name_ch3+".tif]  image4=["+titlewoext+"-"+CropID+"-"+Color_ch4+"_"+name_ch4+".tif] image5=["+titlewoext+"-"+CropID+"_Merge-all-wscale.tif]");
+run("Concatenate...", "  title=[Stack] image1=["+titlewoext+"-"+CropID+"_"+Color_ch1+"-"+name_ch1+".tif] image2=["+titlewoext+"-"+CropID+"_"+Color_ch2+"-"+name_ch2+".tif] image3=["+titlewoext+"-"+CropID+"_"+Color_ch3+"-"+name_ch3+".tif]  image4=["+titlewoext+"-"+CropID+"_"+Color_ch4+"-"+name_ch4+".tif] image5=["+titlewoext+"-"+CropID+"_Merge-all-wscale.tif]");
 run("Make Montage...", "columns=4 rows=1 first=2 last=5");
 selectWindow("Montage");
 saveAs("Tiff", ""+output+""+titlewoext+"_Montage.tif");
