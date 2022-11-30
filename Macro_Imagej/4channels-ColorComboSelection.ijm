@@ -188,6 +188,6 @@ saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch4+"-wscale.tif");
 //Generate montage.
 
 run("Concatenate...", "  title=[Stack] image1=["+titlewoext+"_"+Color_ch1+"-"+name_ch1+".tif] image2=["+titlewoext+"_"+Color_ch2+"-"+name_ch2+".tif] image3=["+titlewoext+"_"+Color_ch3+"-"+name_ch3+".tif]  image4=["+titlewoext+"_"+Color_ch4+"-"+name_ch4+".tif] image5=["+titlewoext+"_Merge-all-wscale.tif]");
-run("Make Montage...", "columns=4 rows=1 first=2 last=5");
+run("Make Montage...", "columns=5 rows=1 first=1 last=5");
 selectWindow("Montage");
 saveAs("Tiff", ""+output+""+titlewoext+"_Montage.tif");
