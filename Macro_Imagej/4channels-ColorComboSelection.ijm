@@ -1,10 +1,10 @@
 //Set your output folder
 
-output = "/Users/amarco/Desktop/LTL-WT1-PODXL/Processed_MaxIP/" // D:/Users/AndresM/KO-Processed/
+output = "/PATH/TO/YOUR/FOLDER/" // Remember to put the last /
 
 //Fill with your file extension (Type ".extension")
 
-extension = ".tif";
+extension = ".czi";
 
 //Set names of your channels with the same order that appears in open images
 
@@ -111,10 +111,10 @@ selectWindow(FIJI_ch4_ID);run(Color_ch4);
 //Add commands in case you want to adjust brightness/contrast or filtering
 //Next inactive lines include some example of these commands:
 
-selectWindow(FIJI_ch1_ID); setMinAndMax(150, 2000);//run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
-selectWindow(FIJI_ch2_ID); setMinAndMax(200, 1800);//run("Subtract Background...", "rolling=50");
-selectWindow(FIJI_ch3_ID);run("Median...", "radius=2");setMinAndMax(300, 3300);//setMinAndMax(3000, 41000); //run("Subtract Background...", "rolling=100");run("Median...", "radius=2");
-selectWindow(FIJI_ch4_ID);setMinAndMax(200, 2500);//run("Subtract Background...", "rolling=100");run("Enhance Contrast", "saturated=0.035");
+selectWindow(FIJI_ch1_ID); //setMinAndMax(150, 2000);//run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
+selectWindow(FIJI_ch2_ID); //setMinAndMax(200, 1800);//run("Subtract Background...", "rolling=50");
+selectWindow(FIJI_ch3_ID);//run("Median...", "radius=2");setMinAndMax(300, 3300);//setMinAndMax(3000, 41000); //run("Subtract Background...", "rolling=100");run("Median...", "radius=2");
+selectWindow(FIJI_ch4_ID);//setMinAndMax(200, 2500);//run("Subtract Background...", "rolling=100");run("Enhance Contrast", "saturated=0.035");
 
 waitForUser("adjust channels separately");
 
