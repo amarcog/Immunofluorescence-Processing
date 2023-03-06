@@ -1,28 +1,28 @@
 //Set your output folder
 
-output = "/Users/andresmg/Downloads/Test_NewMacro/Processed/" // D:/Users/AndresM/KO-Processed/
+output = "/Users/amarco/Desktop/LTL-WT1-PODXL/Processed_MaxIP/" // D:/Users/AndresM/KO-Processed/
 
 //Fill with your file extension (Type ".extension")
 
-extension = ".czi";
+extension = ".tif";
 
 //Set names of your channels with the same order that appears in open images
 
 name_ch1 = "DAPI";
-name_ch2 = "WT1";
-name_ch3 = "ACE2";
-name_ch4 = "LTL";
+name_ch2 = "LTL";
+name_ch3 = "WT1";
+name_ch4 = "PODXL";
 
 //Set colours of your channels (Entry values should be as "Grays", "Red", "Green", "Blue", "Cyan", "Magenta", "Yellow")
 
 Color_ch1 = "Blue";
-Color_ch2= "Red";
-Color_ch3= "Green";
+Color_ch2= "Green";
+Color_ch3= "Red";
 Color_ch4= "Grays";
 
 //Set Projection (Types: "Max Intensity", "Average Intensity", "Min Intensity", "Sum Slices", "Median", "Standard Deviation")
 
-Projection = "Yes";
+Projection = "No";
 
 Pro_type_ch1 = "Max Intensity";
 Pro_type_ch2 = "Max Intensity";
@@ -111,10 +111,10 @@ selectWindow(FIJI_ch4_ID);run(Color_ch4);
 //Add commands in case you want to adjust brightness/contrast or filtering
 //Next inactive lines include some example of these commands:
 
-selectWindow(FIJI_ch1_ID); //run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
-selectWindow(FIJI_ch2_ID); //run("Subtract Background...", "rolling=50");
-selectWindow(FIJI_ch3_ID);//setMinAndMax(3000, 41000); //run("Subtract Background...", "rolling=100");run("Median...", "radius=2"
-selectWindow(FIJI_ch4_ID); //run("Subtract Background...", "rolling=100");run("Enhance Contrast", "saturated=0.035");
+selectWindow(FIJI_ch1_ID); setMinAndMax(150, 2000);//run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
+selectWindow(FIJI_ch2_ID); setMinAndMax(200, 1800);//run("Subtract Background...", "rolling=50");
+selectWindow(FIJI_ch3_ID);run("Median...", "radius=2");setMinAndMax(300, 3300);//setMinAndMax(3000, 41000); //run("Subtract Background...", "rolling=100");run("Median...", "radius=2");
+selectWindow(FIJI_ch4_ID);setMinAndMax(200, 2500);//run("Subtract Background...", "rolling=100");run("Enhance Contrast", "saturated=0.035");
 
 waitForUser("adjust channels separately");
 
@@ -134,20 +134,20 @@ FIJI_ch2_ID = "C2-" +titlewoext+ "_Composite.tif";
 FIJI_ch3_ID = "C3-" +titlewoext+ "_Composite.tif";
 FIJI_ch4_ID = "C4-" +titlewoext+ "_Composite.tif";
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
 
-run("Merge Channels...", "c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch1+".tif");
+run("Merge Channels...", "c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch1+".tif");
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch2+".tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch2+".tif");
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c4=["+FIJI_ch4_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch3+".tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c4=["+FIJI_ch4_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch3+".tif");
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch4+".tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch4+".tif");
 
 //Save individual channels as RGB
 
