@@ -153,14 +153,14 @@ FIJI_ch3_ID = "C3-" +titlewoext+ "-" +CropID+ "_Composite.tif";
 run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] keep");
 selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_Merge-all.tif");
 
-run("Merge Channels...", "c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch1+".tif");
+run("Merge Channels...", "c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch1+".tif");
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c3=["+FIJI_ch3_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch2+".tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c3=["+FIJI_ch3_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch2+".tif");
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch3+".tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] create keep");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_MergeWO-"+name_ch3+".tif");
 
 //Save individual channels as RGB
 
