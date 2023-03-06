@@ -9,9 +9,9 @@ extension = ".czi";
 //Set names of your channels with the same order that appears in open images
 
 name_ch1 = "DAPI";
-name_ch2 = "LTL";
-name_ch3 = "WT1";
-name_ch4 = "PODXL";
+name_ch2 = "WT1";
+name_ch3 = "ACE2";
+name_ch4 = "LTL";
 
 //Set colours of your channels (Entry values should be as "Grays", "Red", "Green", "Blue", "Cyan", "Magenta", "Yellow")
 
