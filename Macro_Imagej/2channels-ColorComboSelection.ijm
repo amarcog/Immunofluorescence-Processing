@@ -1,24 +1,24 @@
 //Set your output folder
 
-output = "/Users/andresmg/Downloads/Test_NewMacro/Processed/" // D:/Users/AndresM/KO-Processed/
+output = "/Users/andresmg/Downloads/Upwork-Sulaiman/Processed/" // D:/Users/AndresM/KO-Processed/
 
 //Fill with your file extension (Type ".extension")
 
-extension = ".czi";
+extension = ".tif";
 
 //Set names of your channels with the same order that appears in open images
 
-name_ch1 = "DAPI";
-name_ch2 = "WT1";
+name_ch1 = "MOMA";
+name_ch2 = "DAPI";
 
 //Set colours of your channels (Entry values should be as "Grays", "Red", "Green", "Blue", "Cyan", "Magenta", "Yellow")
 
-Color_ch1 = "Blue";
-Color_ch2= "Red";
+Color_ch1 = "Green";
+Color_ch2= "Blue";
 
 //Set Projection (Types: "Max Intensity", "Average Intensity", "Min Intensity", "Sum Slices", "Median", "Standard Deviation")
 
-Projection = "Yes";
+Projection = "No";
 
 Pro_type_ch1 = "Max Intensity";
 Pro_type_ch2 = "Max Intensity";
@@ -96,8 +96,8 @@ selectWindow(FIJI_ch2_ID);run(Color_ch2);
 //Add commands in case you want to adjust brightness/contrast or filtering
 //Next inactive lines include some example of these commands:
 
-selectWindow(FIJI_ch1_ID); //run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
-selectWindow(FIJI_ch2_ID); //run("Subtract Background...", "rolling=50");run("Median...", "radius=2"):
+selectWindow(FIJI_ch1_ID); setMinAndMax(49, 230); //run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
+selectWindow(FIJI_ch2_ID); setMinAndMax(21, 95); //run("Subtract Background...", "rolling=50");run("Median...", "radius=2"):
 
 waitForUser("adjust channels separately");
 
@@ -113,10 +113,12 @@ selectWindow(""+titlewoext+"_Composite.tif"); run("Split Channels");
 //Rename colours from composite
 
 FIJI_ch1_ID = "C1-" +titlewoext+ "_Composite.tif";
+selectWindow(FIJI_ch1_ID);run(Color_ch1);
 FIJI_ch2_ID = "C2-" +titlewoext+ "_Composite.tif";
+selectWindow(FIJI_ch2_ID);run(Color_ch2);
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] keep create");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
 
 //Save individual channels as RGB
 
