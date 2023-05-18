@@ -124,8 +124,8 @@ FIJI_ch1_ID = "C1-" +titlewoext+ "_Composite.tif";
 FIJI_ch2_ID = "C2-" +titlewoext+ "_Composite.tif";
 FIJI_ch3_ID = "C3-" +titlewoext+ "_Composite.tif";
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] keep create");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
 
 run("Merge Channels...", "c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] create keep");
 run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_MergeWO-"+name_ch1+".tif");
