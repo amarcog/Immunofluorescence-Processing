@@ -140,8 +140,8 @@ selectWindow(""+titlewoext+"-"+CropID+"_Composite.tif"); run("Split Channels");
 FIJI_ch1_ID = "C1-" +titlewoext+ "-" +CropID+ "_Composite.tif";
 FIJI_ch2_ID = "C2-" +titlewoext+ "-" +CropID+ "_Composite.tif";
 
-run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] keep");
-selectWindow("RGB");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_Merge-all.tif");
+run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] keep create");
+run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"-"+CropID+"_Merge-all.tif");
 
 //Save individual channels as RGB
 
