@@ -34,6 +34,9 @@ margen_size = Cm(3)
 #(7)Set the path were your processed images are located
 os.chdir('/Users/amarco/Desktop/Immunofluorescence_Processing/Processed')
 
+#(8)Set the extension of your images
+extension = '.tif'
+
 #Since this point don't modify the script
 
 #Data derived from imput
@@ -45,8 +48,8 @@ n_channels = len(channels_list) #Calculate the number of channels
 #(2)Extracting image names
 
 path_folder = os.getcwd()
-image_list_full = sorted(glob.glob('*_'+channels_list[0]+'.tif'))
-image_list = [image.replace('_'+channels_list[0]+'.tif','') for image in image_list_full]
+image_list_full = sorted(glob.glob('*_'+channels_list[0]+extension))
+image_list = [image.replace('_'+channels_list[0]+extension,'') for image in image_list_full]
 
 #(3)Function to define ranges that will serve 
 #to define the images from the image_list that will be included in each slide
@@ -144,7 +147,7 @@ for r in range_list:
         
         for j in range(0,len(channels_list)):
             
-            path = path_folder +'/' + image_list[n] +'_'+channels_list[j]+'.tif' #path to image
+            path = path_folder +'/' + image_list[n] +'_'+channels_list[j]+extension #path to image
             
             if j == 0:
             
