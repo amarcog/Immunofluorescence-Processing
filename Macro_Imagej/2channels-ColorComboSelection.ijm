@@ -96,8 +96,8 @@ selectWindow(FIJI_ch2_ID);run(Color_ch2);
 //Add commands in case you want to adjust brightness/contrast or filtering
 //Next inactive lines include some example of these commands:
 
-selectWindow(FIJI_ch1_ID); setMinAndMax(49, 230); //run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
-selectWindow(FIJI_ch2_ID); setMinAndMax(21, 95); //run("Subtract Background...", "rolling=50");run("Median...", "radius=2"):
+selectWindow(FIJI_ch1_ID); //setMinAndMax(49, 230); //run("Subtract Background...", "rolling=50");setMinAndMax(1000, 30000);
+selectWindow(FIJI_ch2_ID); //setMinAndMax(21, 95); //run("Subtract Background...", "rolling=50");run("Median...", "radius=2"):
 
 waitForUser("adjust channels separately");
 
