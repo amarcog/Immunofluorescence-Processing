@@ -1,6 +1,6 @@
 //Set your output folder
 
-output = "/Users/andresmg/Downloads/Upwork-Sulaiman/Processed/" // D:/Users/AndresM/KO-Processed/
+output = "/PATH/TO/YOUR/FOLDER/" // D:/Users/AndresM/KO-Processed/
 
 //Fill with your file extension (Type ".extension")
 
