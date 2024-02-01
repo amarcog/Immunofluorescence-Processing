@@ -134,6 +134,15 @@ FIJI_ch2_ID = "C2-" +titlewoext+ "_Composite.tif";
 FIJI_ch3_ID = "C3-" +titlewoext+ "_Composite.tif";
 FIJI_ch4_ID = "C4-" +titlewoext+ "_Composite.tif";
 
+//Get min and max values
+
+selectWindow(FIJI_ch1_ID);getMinAndMax(min_ch1, max_ch1);
+selectWindow(FIJI_ch2_ID);getMinAndMax(min_ch2, max_ch2);
+selectWindow(FIJI_ch3_ID);getMinAndMax(min_ch3, max_ch3);
+selectWindow(FIJI_ch4_ID);getMinAndMax(min_ch4, max_ch4);
+
+//Make merge
+
 run("Merge Channels...", "c1=["+FIJI_ch1_ID+"] c2=["+FIJI_ch2_ID+"] c3=["+FIJI_ch3_ID+"] c4=["+FIJI_ch4_ID+"] create keep");
 run("RGB Color");saveAs("Tiff", ""+output+""+titlewoext+"_Merge-all.tif");
 
@@ -197,10 +206,10 @@ saveAs("Tiff", ""+output+""+titlewoext+"_Montage.tif");
 print("Original file name: " + title);
 print(" ");
 print("Color assignation: ");
-print("Ch1: " + name_ch1 + " -> " + Color_ch1);
-print("Ch2: " + name_ch2 + " -> " + Color_ch2);
-print("Ch3: " + name_ch3 + " -> " + Color_ch3);
-print("Ch4: " + name_ch4 + " -> " + Color_ch4);
+print("Ch1: " + name_ch1 + " -> " + Color_ch1 + " | Adjusted histogram range: " + min_ch1 + "-" + max_ch1);
+print("Ch2: " + name_ch2 + " -> " + Color_ch2 + " | Adjusted histogram range: " + min_ch2 + "-" + max_ch2);
+print("Ch3: " + name_ch3 + " -> " + Color_ch3 + " | Adjusted histogram range: " + min_ch3 + "-" + max_ch3);
+print("Ch4: " + name_ch4 + " -> " + Color_ch4 + " | Adjusted histogram range: " + min_ch4 + "-" + max_ch4);
 print(" ");
 if (Projection=="Yes") {
 print("Type of projection assigned: ");
