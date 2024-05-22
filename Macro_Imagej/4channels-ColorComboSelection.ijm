@@ -215,8 +215,8 @@ if (Projection=="Yes") {
 print("Type of projection assigned: ");
 print("Ch1: " + name_ch1 + " -> " + Pro_type_ch1);
 print("Ch2: " + name_ch2 + " -> " + Pro_type_ch2);
-print("Ch2: " + name_ch3 + " -> " + Pro_type_ch3);
-print("Ch2: " + name_ch4 + " -> " + Pro_type_ch4);
+print("Ch3: " + name_ch3 + " -> " + Pro_type_ch3);
+print("Ch4: " + name_ch4 + " -> " + Pro_type_ch4);
 print("Projected Z range: ("+start+"-"+end+")");} else {
 print("Original image was not a Z-stack");};
 print(" ");
