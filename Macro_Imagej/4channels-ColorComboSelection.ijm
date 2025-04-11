@@ -34,6 +34,14 @@ Pro_type_ch4 = "Max Intensity";
 start = "1"
 end = "21"
 
+//Set calibration
+Need_cal = "Yes";
+
+units = "um";
+px_width = 1.32;
+px_height = 1.32;
+vx_depth = 1.0;
+
 //Set scale bar
 
 scale_bar = "200"
@@ -42,8 +50,14 @@ scale_bar = "200"
 //Only if it is requigrays, command lines related with adjustment 
 //of brightness/contrast and filtering could be added
 
-
 title = getTitle();titlewoext = replace(title, extension, "");
+
+//Calibrate if needed.
+if (Need_cal == "Yes") {
+
+	Stack.setXUnit(units);
+	run("Properties...", "pixel_width="+px_width+" pixel_height="+px_height+" voxel_depth="+vx_depth+"");
+}
 
 run("Split Channels");
 
