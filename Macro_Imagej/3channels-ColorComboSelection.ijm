@@ -187,3 +187,25 @@ run("Concatenate...", "  title=[Stack] image1=["+titlewoext+"_"+Color_ch1+"-"+na
 run("Make Montage...", "columns=4 rows=1 first=1 last=4");
 selectWindow("Montage");
 saveAs("Tiff", ""+output+""+titlewoext+"_Montage.tif");
+
+//Generate Report
+
+print("Original file name: " + title);
+print(" ");
+print("Color assignation: ");
+print("Ch1: " + name_ch1 + " -> " + Color_ch1 + " | Adjusted histogram range: " + min_ch1 + "-" + max_ch1);
+print("Ch2: " + name_ch2 + " -> " + Color_ch2 + " | Adjusted histogram range: " + min_ch2 + "-" + max_ch2);
+print("Ch3: " + name_ch3 + " -> " + Color_ch3 + " | Adjusted histogram range: " + min_ch3 + "-" + max_ch3);
+print(" ");
+if (Projection=="Yes") {
+print("Type of projection assigned: ");
+print("Ch1: " + name_ch1 + " -> " + Pro_type_ch1);
+print("Ch2: " + name_ch2 + " -> " + Pro_type_ch2);
+print("Ch3: " + name_ch3 + " -> " + Pro_type_ch3);
+print("Projected Z range: ("+start+"-"+end+")");} else {
+print("Original image was not a Z-stack");};
+print(" ");
+print("Scale bar: " + scale_bar);
+
+selectWindow("Log");
+saveAs("Txt", ""+output+""+titlewoext+"_config.txt");
